@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body{
+            
+        }
+        div{
+            
+            justify content: center;
+        }
+    </style>
+    
+    <header>
+        {% include "header.html" %}
+    </header>
+    <main>
+        {% for event in events %}
+        <div style="height:400px; width:260px;">
+            <img src="{{ event.image.url }}" alt="Event Image" style="width:182px; height:255px; object-fit: cover;  border-radius: 10px;">
+            <p>year: {{ event.year }}</p>
+            <p>{{ event.description }}</p>
+        </div>
+        {% endfor %}
+    </main>
+    
+    <footer>
+        {% include "footer.html" %}
+    </footer>
+</body>
+</html>

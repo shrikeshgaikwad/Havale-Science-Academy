@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'static/style.css' %}">
+    <script src="{% static 'static/script.js' %}"></script>
+
+    <style>
+
+
+
+
+        nav {
+
+            display: flex;
+            justify-content: space-around;
+            background-color: #413e3ec6;
+            box-shadow: 0 4px 8px rgb(255, 228, 228);
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        nav a:hover {
+            background-color: #181717;
+            color: rgb(253, 243, 243);
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #bdc3c7;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #1abc9c;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #16a085;
+        }
+        .signup-container {
+
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+        .signup-container h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #34495e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        {% include "header.html" %}
+    </header>
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+    <div class="signup-container">
+        <h2>Signup</h2>
+        <form action="/signup/" method="post">
+            {% csrf_token %}
+            {% comment %} <input type="hidden" name="usertype" value="Student"> {% endcomment %}
+            <label for="name">Student full Name:</label>
+            <input type="text" id="name" name="name" pattern="[A-Za-z ]+" minlength="2" maxlength="20" title="Name must contain only alphabets and contain atleast two characters" required>
+            <label for="name">username:</label>
+            <input type="text" id="username" name="username" pattern="[A-Za-z ]+" minlength="2" maxlength="20" title="Name must contain only alphabets and contain atleast two characters" required>
+            <label for="mob">mobile number:</label>
+            <input type="text" id="mob" name="mob"  title="Numbers can not contain alphabets, number shuld be of exactly 10 digits, number should start with 6,7, 8 or 9" required>
+            
+            
+
+             
+            <label for="name">Standard:</label>
+            <input type="options" id="std" name="std"  minlength="1" maxlength="2" title="Name must contain only alphabets and contain atleast two characters"required>
+ 
+
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" minlength="4" title="password should containt at least 4 characters" required>
+            <button type="submit">Signup</button>
+            <a href="/login/">already have account? login here</a>
+        </form>
+    </div>
+</body>
+</html>

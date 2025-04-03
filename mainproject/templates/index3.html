@@ -1,0 +1,515 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ExcelAcademy - Expert Coaching Classes</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'static/style3.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="{% static 'static/script3.js' %}"></script>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">
+        <img  id='logoImg' src="{% static 'static/logo.png' %}" alt="Logo">
+        <span>Havale Science Academy</span>
+      </div>
+      <div class="nav-links" id="navLinks">
+        <a href="">Home</a>
+        <a href="#courses">Courses</a>
+        <a href="#about">About</a>
+        <a href="events/">Event Gallery</a>
+        <a href="#testimonials">Notes</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button style = "color:white;" class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+      </button>
+      <a href="#contact" class="btn btn-primary enroll-btn">Login</a>
+    </div>
+  </nav>
+
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-container">
+      <div class="mobile-menu-header">
+        <div class="logo">
+          <i class="fas fa-book-open"></i>
+          <span>Havale Science Academy</span>
+        </div>
+        <button class="close-menu-btn" id="closeMenuBtn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="mobile-nav-links">
+        <a href="#home">Home</a>
+        <a href="#courses">Courses</a>
+        <a href="#about">About</a>
+        <a href="#testimonials">Event Gallery</a>
+        <a href="#testimonials">Notes</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a href="#contact" class="btn btn-primary mobile-enroll-btn">Login</a>
+    </div>
+  </div>
+
+
+
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 id="dareFromLaptop">Dare to Dream With Us</h1>
+          <h2 id="dareFromMobile">Dare to Dream With Us</h2>
+          <p>Innovative learning experiences designed to help you excel in academics and exams.</p>
+          <div class="hero-buttons">
+            <a href="#courses" class="btn btn-light">Explore Courses</a>
+            <a href="#contact" class="btn btn-outline">Contact Us</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Students learning">
+        </div>
+      </div>
+    </div>
+    <div class="wave">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill="#ffffff" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,149.3C960,160,1056,160,1152,138.7C1248,117,1344,75,1392,53.3L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+      </svg>
+    </div>
+  </section>
+
+
+
+  
+  <!-- Features Section -->
+  <section class="features">
+    <div class="container">
+      <div class="section-header">
+        <h2>Why Choose HSA?</h2>
+        <p>We provide a supportive learning environment with personalized attention to help students identify their true potential.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-book"></i>
+          </div>
+          <h3>Quality Education</h3>
+          <p>Students will learn all the conacepts from very basics to advanced level.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-award"></i>
+          </div>
+          <h3>Proven Results</h3>
+          <p>Our students consistently perform best at there academics.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3>Personalized Teaching</h3>
+          <p>We pay a detiled attention to each student.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses Section -->
+  <section id="courses" class="courses">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Courses</h2>
+        <p>Comprehensive courses designed to help students excel in various subjects and exams.</p>
+      </div>
+      <div class="courses-grid">
+        <div class="course-card">
+          <div class="course-image">
+            <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Mathematics">
+          </div>
+
+
+          <div class="course-content">
+            <h3>Mathematics</h3>
+            <p>Master mathematical concepts with our comprehensive course designed for all levels.</p>
+            <div class="course-meta">
+              <div class="meta-item">
+                <i class="fas fa-book"></i>
+                <span>SSC/CBSE</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-users"></i>
+                <span>1st to 10th std</span>
+              </div>
+            </div>
+            <a href="#contact" class="course-link">
+              Learn More <i class="fas fa-chevron-right"></i>
+            </a>
+          </div>
+        </div>
+
+
+        <div class="course-card">
+          <div class="course-image">
+            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Physics">
+          </div>
+          <div class="course-content">
+            <h3>Science</h3>
+            <p>Understand the magical scientific concepts through practical examples and problem-solving.</p>
+            <div class="course-meta">
+              <div class="meta-item">
+                <i class="fas fa-book"></i>
+                <span>SSC/CBSE</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-users"></i>
+                <span>1st to 10th</span>
+              </div>
+            </div>
+            <a href="#contact" class="course-link">
+              Learn More <i class="fas fa-chevron-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="course-card">
+          <div class="course-image">
+            <img src="{% static 'static/english.jpg' %}" alt="English">
+          </div>
+          <div class="course-content">
+            <h3>English</h3>
+            <p>Master the art of communication with our comprehensive English course, designed for learners of all levels.</p>
+            <div class="course-meta">
+              <div class="meta-item">
+                <i class="fas fa-clock"></i>
+                <span>SSC/CBSE</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-users"></i>
+                <span>1st to 10th std</span>
+              </div>
+            </div>
+            <a href="#contact" class="course-link">
+              Learn More <i class="fas fa-chevron-right"></i>
+            </a>
+          </div>
+        </div>
+
+          <div class="course-card">
+            <div class="course-image">
+              <img src="{% static 'static/marathi.webp' %}" alt="English">
+          </div>
+          <div class="course-content">
+            <h3>मराठी</h3>
+            <p>आपल्या मातृभाषेवर प्रभुत्व मिळवा. </p>
+            <div class="course-meta">
+              <div class="meta-item">
+                <i class="fas fa-clock"></i>
+                <span>SSC/CBSE</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-users"></i>
+                <span>1st to 10th std</span>
+              </div>
+            </div>
+            <a href="#contact" class="course-link">
+              Learn More <i class="fas fa-chevron-right"></i>
+            </a>
+        </div>
+      </div>
+    </div>
+
+      <div class="courses-cta">
+        <a href="#contact" class="btn btn-primary">
+          View All Courses <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="About ExcelAcademy">
+        </div>
+        <div class="about-text">
+          <h2>About Havale Science Academy</h2>
+          <p>Founded in 2016, HSA has been dedicated to providing quality education to students of all ages. Our mission is to create a supportive learning environment where students can thrive academically and personally.</p>
+          <p>With a team of experienced educators and a proven teaching methodology, we have helped hundreds of students achieve their academic goals and secure admissions in prestigious institutions.</p>
+          <div class="about-stats">
+            <div class="stat">
+              <div class="stat-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <span>Expert Teachers</span>
+            </div>
+            <div class="stat">
+              <div class="stat-icon">
+                <i class="fas fa-book-open"></i>
+              </div>
+              <span>SSC/CBSE/English Medium</span>
+            </div>
+
+          </div>
+          <a href="#contact" class="btn btn-primary">
+            Learn More About Us <i class="fas fa-chevron-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <h2>What Our Students Say</h2>
+        <p>Hear from our students who have experienced the difference.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <img src="" alt="Student">
+            <div class="testimonial-info">
+              <h4>Omkar</h4>
+              <p>SSC 2023</p>
+            </div>
+          </div>
+          <p class="testimonial-text">"The teachers at HSA made complex mathematical concepts easy to understand. Their personalized approach helped me score 89% in my SSC."</p>
+          <div class="testimonial-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <img src="" alt="Student">
+            <div class="testimonial-info">
+              <h4>Vaibhav</h4>
+              <p>SSC 2024</p>
+            </div>
+          </div>
+          <p class="testimonial-text">"The practical approach to teaching physics at HSA helped me develop a deep understanding of the subject."</p>
+          <div class="testimonial-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <img src="" alt="Student">
+            <div class="testimonial-info">
+              <h4>Vaishnvi</h4>
+              <p>SSC 2024</p>
+            </div>
+          </div>
+          <p class="testimonial-text">"The Science course at ExcelAcademy is exceptional. The teachers make learning fun and interactive. I improved my grades significantly within just two months."</p>
+          <div class="testimonial-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="section-header">
+        <h2>Get in Touch</h2>
+        <p>Have questions or ready to enroll? Contact us today to learn more about our courses and schedule.</p>
+      </div>
+      <div class="contact-content">
+        <div class="contact-form">
+          <form id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" placeholder="Your name">
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="Your email">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" placeholder="Your phone number">
+            </div>
+            <div class="form-group">
+              <label for="course">Standard</label>
+              <select id="course">
+                <option value="">Select Standard</option>
+                <option value="1">1st</option>
+                <option value="2">2nd</option>
+                <option value="3">3rd</option>
+                <option value="4">4th</option>
+                <option value="5">5th</option>
+                <option value="6">6th</option>
+                <option value="7">7th</option>
+                <option value="8">8th</option>
+                <option value="9">9th</option>
+                <option value="10">10th</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" rows="4" placeholder="Your message"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+          </form>
+        </div>
+        <div class="contact-info">
+          <div class="info-card">
+            <h3>Contact Information</h3>
+            <div class="info-items">
+              <div class="info-item">
+                <div class="info-icon">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="info-text">
+                  <h4>Address</h4>
+                  <p>Havale Science Academy, Chintamani Park, Ganeshwadi,Theur.</p>
+                </div>
+              </div>
+              <div class="info-item">
+                <div class="info-icon">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div class="info-text">
+                  <h4>Email</h4>
+                  <p>havalescienceacademy@gmail.com</p>
+                </div>
+              </div>
+              <div class="info-item">
+                <div class="info-icon">
+                  <i class="fas fa-phone"></i>
+                </div>
+                <div class="info-text">
+                  <h4>Phone</h4>
+                  <p>+91 9552765895</p>
+                </div>
+              </div>
+              <div class="info-item">
+                <div class="info-icon">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <div class="info-text">
+                  <h4>Office Hours</h4>
+                  <p>Monday - Saturday: 5:00 PM - 9:00 PM</p>
+                </div>
+              </div>
+            </div>
+            <div class="social-links">
+              <h4>Locate Us on</h4>
+              <div class="social-icons">
+                <a href="https://maps.app.goo.gl/iVFGHzNzgGmxzJfz9" class="social-icon">
+                  <i class="fas fa-map-marker-alt"></i>
+                </a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <div class="footer-logo">
+            <i class="fas fa-book-open"></i>
+            <span>Havale Science Academy</span>
+          </div>
+          <p>Providing quality education and personalized coaching to help students excel in academics and exams.</p>
+        </div>
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#testimonials">Event Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Courses</h3>
+          <ul class="footer-links">
+            <li><a href="#">Mathematics</a></li>
+            <li><a href="#">Science</a></li>
+            <li><a href="#">English</a></li>
+            <li><a href="#">Marathi</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Contact Us</h3>
+          <ul class="footer-contact">
+            <li>
+              <i class="fas fa-map-marker-alt"></i>
+              <span>HSA, Chintamani park, Ganeshwadi,Theur.</span>
+            </li>
+            <li>
+              <i class="fas fa-envelope"></i>
+              <span>havalescienceacademy@gmail.com</span>
+            </li>
+            <li>
+              <i class="fas fa-phone"></i>
+              <span>+91 9552765895</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+          
+
+
+
+          <h3>For technical queries</h3>
+          <ul class="footer-contact">
+            <li>
+              <i class="fas fa-envelope"></i>
+              <span>rahulthube0805@gmail.com</span>
+            </li>
+            <li>
+              <i class="fas fa-envelope"></i>
+              <span>shrikeshgaikwad@gmail.com</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 HSA. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

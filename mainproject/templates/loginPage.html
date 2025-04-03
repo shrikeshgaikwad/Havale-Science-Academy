@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            
+        body{
+            
+        }
+
+        
+        </style>
+        <script src="{% static 'static/script.js' %}"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'static/style.css' %}">
+
+    </head>
+    {% include "header.html" %}
+
+    
+    <body>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+    <div class="login-container">
+        <h2>Login</h2>
+        <form action="/login/" method="post">
+            {% csrf_token %}
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Login</button>
+        </form>
+        <p><a href="/signupPage/">Don't have an account? Sign up</a></p>
+    </div>
+</body>
+{% include "footer.html" %}
+
+</html>
