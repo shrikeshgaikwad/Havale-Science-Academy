@@ -21,11 +21,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',home,name="home"),
     path('courses/',courses,name="courses"),
-    path('about/',about,name="about"),
     path('notes/',notes,name="notes"),
-    path('contact/',contact,name="contact"),
     path('events/',events,name="events"),
     path('loginPage/',loginPage,name="loginPage"),
     path('signupPage/',signupPage,name="signup Page"),
+    path('profile/',profile,name="student profile page"),
+    path('logout/',loginPage,name="Logout "),
+
+
 
 ]
