@@ -63,15 +63,21 @@
             <h2>Login</h2>
             <form action="/loginPage/" method="POST">
                 {% csrf_token %}
-            
+                
                 <label for="username">Username </label>
                 <input type="text" id="username" name="username" pattern="[A-Za-z]+" minlength="2" maxlength="30" title = "Name must conatain only alphabets and not digits and special characters">
                 <h1></h1>
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" minlength="4" title="password should containt at least 4 characters" required>
+                {% if messages %}
+                {% for message in messages  %}
+                <li>{{message}}</li>
+                {% endfor %}
+        
+                {% endif %}
                 <button type="submit">Login</button>
                 <h3></h3>
-                <h3><a href="/loginPage/">Don't have account? Sign up</a></h3>
+                <h3><a href="/signupPage/">Don't have account? Sign up</a></h3>
                 <h3><a href="">Forgot Password</a></h3>
 
             </form>

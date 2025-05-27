@@ -2,19 +2,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ExcelAcademy - Expert Coaching Classes</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'static/style3.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="{% static 'static/script.js' %}"></script>
 </head>
 <body>
-    <header>
-        {% include "header.html" %}
-    </header>
-    <main>
-        admin page
-    </main>
-    <footer>
-        {% include "footer.html" %}
-    </footer>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">
+        <img  id='logoImg' src="{% static 'static/logo.png' %}" alt="Logo">
+        <span>Havale Science Academy</span>
+      </div>
+      <div class="nav-links" id="navLinks">
+        <a href="/">Home</a>
+        <a href="#courses">Students Data</a>
+        <a href="#about">Teachers Data</a>
+        <a href="/manageEvents/">Manage Event Gallery</a>
+        <a href="#testimonials">Manage Notes</a>
+        <a href="#contact">Message Modeule</a>
+      </div>
+      <button style = "color:white;" class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+      </button>
+      <a href="/logout/" class="btn btn-primary enroll-btn">Logout</a>
+    </div>
+  </nav>
+
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-container">
+      <div class="mobile-menu-header">
+        <div class="logo">
+          <i class="fas fa-book-open"></i>
+          <span>Havale Science Academy</span>
+        </div>
+        <button class="close-menu-btn" id="closeMenuBtn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="mobile-nav-links">
+        <a href="#home">Home</a>
+        <a href="#courses">Courses</a>
+        <a href="#about">About</a>
+        <a href="#testimonials">Event Gallery</a>
+        <a href="#testimonials">Notes</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a href="#contact" class="btn btn-primary mobile-enroll-btn">Login</a>
+    </div>
+  </div>
+
+  <main>
+
+  </main>
+
+  <footer>
+      {% include "footer.html" %}
+  </footer>
 </body>
 </html>
+

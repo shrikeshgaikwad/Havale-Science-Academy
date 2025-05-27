@@ -22,11 +22,12 @@ urlpatterns = [
     path('',home,name="home"),
     path('courses/',courses,name="courses"),
     path('notes/',notes,name="notes"),
-    path('events/',events,name="events"),
+    path('events/',eventGallery,name="events"),
+    path('manageEvents/',eventGallery,name="events"),
     path('loginPage/',loginPage,name="loginPage"),
     path('signupPage/',signupPage,name="signup Page"),
     path('profile/',profile,name="student profile page"),
-    path('logout/',loginPage,name="Logout "),
+    path('logout/',logOutView,name="Logout "),
 
 
 

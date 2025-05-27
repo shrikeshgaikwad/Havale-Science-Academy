@@ -10,8 +10,16 @@ from django.contrib.auth.decorators import *
 def home(request):
     return render(request,"index.html")
 
-def events(request):
-    return render(request,"events.html")
+def eventGallery(request):
+    events = Events.objects.all().order_by('-year')
+    return render(request,"events.html",{'events':events})
+
+@login_required
+def manageEvents(request):
+    if request.user.is_superuser:
+        return render(request,"addEvent.html")
+
+    
 
 @login_required
 def notes(request):
@@ -23,25 +31,32 @@ def courses(request):
 @login_required
 def profile(request):
     if request.user.is_superuser:
+        fees = Fees.objects.all()
+        marks = Marks.objects.all()
+        attendance = Attendance.objects.all()
         standard = request.POST.get('std')
         if standard in (str(0),None):
-            profile = Students.objects.all().order_by('-std')
+            students = Students.objects.all().order_by('-std')
 
         else:
             print(request.user)
 
             standard = int(standard)
             profile = Students.objects.filter(std = standard)
-        return render (request,"admin.html",{'profile':profile})
+        return render (request,"admin.html",{'students':students,'marks':marks,'fees':fees,'attendance':attendance})
 
     else:
         print(request.user.username)
-        profile = Students.objects.filter(username=request.user.username)
-        return render (request,"studentProfile.html",{'profile':profile})
+        students  = Students.objects.filter(username=request.user.username)
+        marks  = Marks.objects.filter(username=request.user.username)
+        attendance  = Attendance.objects.filter(username=request.user.username)
+        fees  = Fees.objects.filter(username=request.user.username)
+        return render (request,"studentProfile.html",{'students':students,'marks':marks,'fees':fees,'attendane':attendance})
 
 def logOutView(request):
+    print("logout")
     logout(request)
-    return redirect('/loginPage/')
+    return redirect('loginPage')
 
 
 def signupPage(request):
@@ -90,8 +105,8 @@ def loginPage(request):
         user = authenticate(username=username,password=password)
 
         if user is None:
-            messages.error(request,'invalid Password')
-            return redirect('/login/')
+            messages.error(request,"Invalid Password")
+            return redirect('/loginPage/')
 
         else:
             login(request,user)
