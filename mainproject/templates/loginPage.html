@@ -59,6 +59,11 @@
         {% include "header.html" %}
     </header>
     <main>
+        {% if messages %}
+        {% for message in messages %}
+        <li>{{message}}</li>
+        {% endfor %}
+        {% endif %}
         <div class = "signup-container">    
             <h2>Login</h2>
             <form action="/loginPage/" method="POST">

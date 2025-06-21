@@ -47,6 +47,9 @@ class Notes(models.Model):
 class Attendance(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     username = models.CharField(max_length=20)
-    presentDays = models.IntegerField(max_length=5)
-    absentDays = models.IntegerField(max_length=5)
+    presentDays = models.IntegerField(max_length=5,null=True,blank=True)
+    absentDays = models.IntegerField(max_length=5,null=True,blank= True)
 
+class defaultFees(models.Model):
+    std = models.IntegerField(max_length=2,null=False,blank=False)
+    defaultFees = models.IntegerField(max_length=5,null=True,blank=True)

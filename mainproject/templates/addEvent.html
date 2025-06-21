@@ -9,7 +9,28 @@
     <header>
         {% include "header.html" %}
     </header>
+    <main>
+        {% for event in events %}
+        <div style="height:400px; width:260px;">
+            <img src="{{ event.image.url }}" alt="Event Image" style="width:182px; height:255px; object-fit: cover;  border-radius: 10px;">
+            <p>year: {{ event.year }}</p>
+            <p>{{ event.description }}</p>
+        </div>
+        {% endfor %}
 
+        <form action="/manageEvents/" method = "POST">
+                {% csrf_token %}
+
+            <label for="eventPhoto">Add new event:</label>
+            <input type="file" name="eventPhoto" id="eventPhoto">
+            <label for="year">Year:</label>
+            <input type="number">
+            <label for="description">description:</label>
+            <input type="text">
+            <button type="submit">Add</button>
+
+        </form>
+    </main>
     <footer>
         {% include "footer.html" %}
     </footer>

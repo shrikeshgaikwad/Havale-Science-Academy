@@ -1,15 +1,115 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ExcelAcademy - Expert Coaching Classes</title>
-  <link rel="stylesheet" type="text/css" href="{% static 'static/style3.css' %}">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <script src="{% static 'static/script.js' %}"></script>
+  
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Havele Science Academy - Admin Panel</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'static/style3.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="{% static 'static/script.js' %}"></script>
+    
+    <script>
+        {% comment %} document.addEventListener("DOMContentLoaded", function () {
+            const hamburger = document.querySelector(".hamburger");
+            const nav = document.querySelector("nav");
+    
+            hamburger.addEventListener("click", function () {
+                nav.classList.toggle("open");
+            });
+        }); {% endcomment %}
+        
+         function toggleEditable() {
+             const tables = document.querySelectorAll('.editable');
+             const isEditable = tables.length === 0;
+             const saveButton = document.getElementById('save-button');
+ 
+             // Toggle the 'editable' class on all tables
+             document.querySelectorAll('table').forEach(table => {
+                 if (isEditable) {
+                     table.classList.add('editable');
+                     makeEditable(table);
+                 } else {
+                     table.classList.remove('editable');
+                     makeNonEditable(table);
+                 }
+             });
+ 
+             // Show or hide the save button
+             saveButton.style.display = isEditable ? 'inline-block' : 'none';
+         }
+ 
+         // Convert table rows to input fields for editing
+         function makeEditable(table) {
+             table.querySelectorAll('td').forEach(td => {
+                 const currentValue = td.innerText.trim();
+                 td.innerHTML = `<input type="text" value="${currentValue}">`;
+             });
+         }
+ 
+         // Revert the table back to non-editable mode
+         function makeNonEditable(table) {
+             table.querySelectorAll('td').forEach(td => {
+                 const input = td.querySelector('input');
+                 if (input) {
+                     td.innerHTML = input.value;
+                 }
+             });
+         }
+         
+ 
+         function saveData() {
+            let tables = document.querySelectorAll('table');
+            let updatedData = [];
+        
+            tables.forEach(function(table) {
+                let rows = table.querySelectorAll('tr');
+                rows.forEach(function(row) {
+                    let cells = row.querySelectorAll('td');
+                    let rowData = {};
+                    cells.forEach(function(cell, index) {
+                        // If the cell contains an input, get its value
+                        let input = cell.querySelector('input');
+                        if (input) {
+                            rowData[`column_${index}`] = input.value;  // Adjust column names based on your DB schema
+                        }
+                    });
+                    if (Object.keys(rowData).length > 0) {
+                        updatedData.push(rowData);
+                    }
+                });
+            });
+
+            fetch('/updateDatabase/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ data: updatedData })
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    alert('Data successfully updated!');
+                } else {
+                    alert('Failed to update data.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error updating data.');
+            });
+        }
+        
+     </script>
+     
+
+
 </head>
+
 <body>
+
   <!-- Navigation -->
   <nav class="navbar">
     <div class="container">
@@ -17,18 +117,21 @@
         <img  id='logoImg' src="{% static 'static/logo.png' %}" alt="Logo">
         <span>Havale Science Academy</span>
       </div>
+
       <div class="nav-links" id="navLinks">
-        <a href="/">Home</a>
-        <a href="#courses">Students Data</a>
-        <a href="#about">Teachers Data</a>
+        <a href="/profile/">Students Data</a>
+        <a href="/teachersData/">Teachers Data</a>
         <a href="/manageEvents/">Manage Event Gallery</a>
-        <a href="#testimonials">Manage Notes</a>
-        <a href="#contact">Message Modeule</a>
+        <a href="/manageNotes/">Manage Notes</a>
+        <a href="/messageModule/">Message Modeule</a>
       </div>
+
       <button style = "color:white;" class="mobile-menu-btn" id="mobileMenuBtn">
         <i class="fas fa-bars"></i>
       </button>
+
       <a href="/logout/" class="btn btn-primary enroll-btn">Logout</a>
+
     </div>
   </nav>
 
@@ -57,9 +160,139 @@
     </div>
   </div>
 
+
+
+
+
   <main>
+             <center><h1>Admin Panel</h1></center>
+         <div id = "div1">
+
+             <form action="/studentProfile/" method="post">
+                 {% csrf_token %}
+                 
+                 <label style = "color:white" for="std">Enter standard</label>
+                 <input style = "width:100px" type="text" id = "std" name = "std" required>
+                 <button type="submit" onclick="changeInputValue()">Search</button>
+                 
+                </form>
+                
+                <!-- Toggle Button to make tables editable -->
+                <div style="text-align: center; margin-bottom: 20px; width: 20px;">
+                    <button onclick="toggleEditable()">Edit Mode</button>
+                    <button id="save-button" class="save-btn" onclick="saveData()" style="display: none;">Save</button>
+                </div>
+            </div>
+
+    <center>
+      <h3 class="tableTitles">Fees Table</h3>
+    </center>
+
+    <div class="adminTables">
+      <table "border=2">
+        <tr>
+          <th>Username</th>
+          <th>Name</th>
+          <th>Std </th>
+          <th>Mobile No.</th>
+          <th>Total Fees</th>
+          <th>Due Fees</th>
+        </tr>
+
+        {% for student in students %}
+        {% for fee in fees %}
+        {% if student.username == fee.username %}
+        <tr>
+          <td>{{student.username}}</td>
+          <td>{{student.studentName}}</td>
+          <td>{{student.std}}</td>
+          <td>{{student.mob}}</td>
+          <td>{{fee.totalFees}}</td>
+          <td>{{fee.dueFees}}</td>
+          
+          
+        </tr>
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+      </table>
+    </div>
+
+        
+    <center>
+      <h3 class="tableTitles">Attendance Table</h3>
+    </center>
+
+    <div class="adminTables">
+      <table "border=2">
+        <tr>
+          <th>Username</th>
+          <th>Name</th>
+          <th>Std</th>
+          <th>Present Days</th>
+          <th>Absent Days</th>
+        </tr>
+
+        {% for student in students %}
+        {% for attendance in attendances %}
+        {% if student.username == attendance.username %}
+        <tr>
+          <td>{{student.username}}</td>
+          <td>{{student.studentName}}</td>
+          <td>{{student.std}}</td>
+          <td>{{attendance.presentDays}}</td>
+          <td>{{attendance.absentDays}}</td>
+           
+        </tr>
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+      </table>
+    </div>
+
+
+
+    <center>
+      <h3 class="tableTitles">Marks Table</h3>
+    </center>
+
+    <div class="adminTables">
+      <table "border=2">
+        <tr>
+          <th>Username</th>
+          <th>Name</th>
+          <th>Std</th>
+          <th>Subject</th>
+          <th>Total Marks</th>
+          <th>Marks Scored</th>
+          <th>Percentage</th>
+        </tr>
+
+        {% for student in students %}
+        {% for mark in marks %}
+        {% if student.username == mark.username %}
+        <tr>
+          <td>{{student.username}}</td>
+          <td>{{student.studentName}}</td>
+          <td>{{student.std}}</td>
+          <td>{{mark.totalMarks}}</td>
+          <td>{{mark.scoredMarks}}</td>
+          <td>{{mark.percentage}}</td>
+           
+        </tr>
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+      </table>
+    </div>
+
+    
+
 
   </main>
+
+
+
 
   <footer>
       {% include "footer.html" %}

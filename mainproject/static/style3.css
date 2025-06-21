@@ -250,8 +250,9 @@
   .hero {
     background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
     color: var(--text-white);
+    height: 490px;
     position: relative;
-    padding: 5rem 0;
+    padding: 3rem 0;
   }
   
   .hero-content {
@@ -287,19 +288,16 @@
     box-shadow: var(--shadow-lg);
   }
   
-  .wave {
-    height: 250px;
-    position: absolute;
-    bottom: -70px;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
+
+
+  .wave{
+    height: 150px;
   }
   
-  /* Features Section */
   .features {
     padding: 4rem 0;
+    padding-top: 105px;
+  
   }
   
   .features-grid {
@@ -667,6 +665,39 @@
     color: var(--text-white);
   }
   
+
+  .adminTables{
+    margin-top: 10px;
+    margin-left: 15%;
+    border-collapse: collapse;
+    border-color: black;
+    border-style: solid;
+    width: 70%;
+    border: solid black;
+    margin-bottom: 10px;
+  }
+  .adminTables table{
+  
+    width: 100%;
+  }
+
+  .adminTables tr,th,td{
+    margin: 0;
+    padding: 0;
+    border: solid black;
+  }
+  .adminTables td,th {
+    padding: 5px;
+    text-align: centre;
+  }
+  .adminTables td{
+    text-align: center;
+  }
+
+
+
+
+
   /* Footer */
   .footer {
     background-color: #1f2937;
@@ -761,6 +792,9 @@
   
   .footer-bottom p {
     color: #d1d5db;
+    justify-content: center;
+    text-align: right;
+    padding-left: 650px;
   }
   
   .footer-bottom-links {
@@ -779,6 +813,10 @@
     color: var(--text-white);
   }
   
+
+  .tableTitles{
+    justify-content: center;
+  }
   /* Media Queries */
   
   @media (min-width: 1024px) {
