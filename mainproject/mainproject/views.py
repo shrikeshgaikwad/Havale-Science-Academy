@@ -169,7 +169,7 @@ def updateDatabase(request):
         # print(updated_data)
 
         for row in updated_data:
-
+            
             username = row.get('column_0')
             name = row.get('column_1')
             newstd = row.get('column_2')
@@ -178,9 +178,11 @@ def updateDatabase(request):
             due = row.get('column_5')
             try:
                 student = Students.objects.get(username=username)
-                print(student.std)
+                # print(student.std)
                 # print(newstd)
-                #student.Sname = name
+                # print(student.std)
+                # print(newstd)
+                student.studentName = name
                 student.std = newstd
                 student.mob = mobile
                 student.totalFees = fees
