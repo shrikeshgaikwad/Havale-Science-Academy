@@ -17,19 +17,40 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from mainproject.views import *
+from myapp.views import * 
+from messageModule.views import * 
+from django.conf import settings
+from django.conf.urls.static import static
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',home,name="home"),
-    path('courses/',courses,name="courses"),
+
     path('notes/',notes,name="notes"),
+    path('manageNotes/',manageNotes,name="manageNotes"),
+    path('deleteNotes/<int:notesId>/',deleteNotes,name="deleteNotes"),
+
     path('events/',eventGallery,name="events"),
-    path('manageEvents/',manageEvents,name="events"),
+    path('manageEvents/',manageEvents,name="manageEvents"),
+    path('deleteEvent/<int:eventId>/',deleteEvent,name="deleteEvent"),
+    
     path('loginPage/',loginPage,name="loginPage"),
     path('signupPage/',signupPage,name="signup Page"),
     path('profile/',profile,name="student profile page"),
     path('logout/',logOutView,name="Logout "),
-    path('updateDatabase/',updateDatabase,name="updateDatabase"),
+    
+    path('updateFeesTable/',updateFeesTable,name="updateFeesTable"),
+    path('updateMarks/',updateMarks,name="updateMarks"),
+    path('updateAttendanceTable/',updateAttendanceTable,name="updateAttendanceTable"),
+
+    path('teachersData/',teachersData,name="teachersData"),
+
 
 
 
 ]
+
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

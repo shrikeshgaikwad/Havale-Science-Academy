@@ -9,7 +9,8 @@
   <link rel="stylesheet" type="text/css" href="{% static 'static/style3.css' %}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="{% static 'static/script.js' %}"></script>
-  {% comment %} <script>
+
+  <script>
     {% comment %} function toggleEditable() {
       const tables = document.querySelectorAll('.editable');
       const isEditable = tables.length === 0;
@@ -28,7 +29,7 @@
       saveButton.style.display = isEditable ? 'inline-block' : 'none';
     } {% endcomment %}
 
-    {% comment %} function toggleEditable() {
+    function toggleEditable() {
   const isOn = document.getElementById('edit-toggle').checked;
   const saveButton = document.getElementById('save-button');
   const label = document.getElementById('toggle-label');
@@ -108,7 +109,7 @@
         return;
       }
 
-      fetch('/updateDatabase/', {
+      fetch('/updateFeesTable/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -128,7 +129,7 @@
           alert('Error updating data.');
         });
     }
-  </script> {% endcomment %} 
+  </script>
 </head>
 
 <body>
@@ -182,47 +183,42 @@
 
   <main>
     <center><h1>Admin Panel</h1></center>
-    <div id="div1" style="padding-top:20px;">
-      <form action="/profile/" method="post">
+    <div id="div1">
+      <form action="/studentProfile/" method="post">
         {% csrf_token %}
-
-        <label for="searchCategory"  style="padding-left:30%;">Search Option :  </label>
-        <select name="searchCategory" id="searchCategory">Select Search Category
-          <option value="std">Standard</option>
-          <option value="username">Username</option>
-          <option value="name">Name</option>
-          <option value="mob">Mobile Number</option>
-          <option value="subject">Subject</option>
-
-        </select>
-
-
-        <label style="color:black; padding-left:10%;" for="searchDetail"> Enter Detail : </label>
-        <input style="width:100px; " type="text" id="detail" name="detail" required>
+        <label style="color:white" for="std">Enter standard</label>
+        <input style="width:100px" type="text" id="std" name="std" required>
         <button type="submit" onclick="changeInputValue()">Search</button>
       </form>
 
+      {% comment %} <!-- Toggle Buttons -->
+      <div style="text-align: center; margin: 20px 0;">
+        <button onclick="toggleEditable()">Edit Mode</button>
+        </div> {% endcomment %}
+        
+        <div class="toggle-container">
+          <label class="switch">
+            <input type="checkbox" id="edit-toggle" onchange="toggleEditable()">
+            <span class="slider round"></span>
+          </label>
+          <span id="toggle-label">Edit Mode</span>
+          
+          <button id="save-button" class="save-btn"  onclick="saveData()" style="display: none; background-color:yellowgreen; color:black width:30px border-redius:5px;" >Save</button>
 
+</div>
 
 
 
     </div>
     <div>
       {% if messages %}
-      <script>
-
-        document.addEventListener('DOMContentLoaded',function(){
-          {% for message in messages %}
-          
-          alert("{{message|escapejs}}")
-          {% endfor %}
-        });
-      </script>
+      {% for message in messages %}
+        <li>{{message}}</li>
+      {% endfor %}
       {% endif %}
     </div>
 
-    <center><h3><a href="/updateFeesTable/" class="btn btn-primary enroll-btn" style="display: inline-block; width: 250px; margin-top: 50px;" >Update Fees Table</a></h3></center>
-
+    <center><h3 class="tableTitles">Fees Table</h3></center>
     <div class="adminTables">
       <table border="2">
         <tr>
@@ -252,73 +248,13 @@
         {% endfor %}
       </table>
     </div>
-    
-    
-    <center><h3><a href="/updateAttendanceTable/" class="btn btn-primary enroll-btn" style="display: inline-block; width: 300px; margin-top: 50px;">Update Attendance Table</a></center></h3>
-    
-    
-    <div class="adminTables">
-      <table border="2">
-        <tr>
-          <td>Username</td>
-          <th>Name</th>
-          <th>Std</th>
-          <th>Present Days</th>
-          <th>Absent Days</th>
-        </tr>
-        
-        {% for student in students %}
-        {% for attendance in attendances %}
-        {% if student.username == attendance.username %}
-        <tr>
-          <td>{{ student.username }}</td>
-          <td>{{ student.studentName }}</td>
-          <td>{{ student.std }}</td>
-          <td>{{ attendance.presentDays }}</td>
-          <td>{{ attendance.absentDays }}</td>
-        </tr>
-        {% endif %}
-        {% endfor %}
-        {% endfor %}
-      </table>
-    </div>
-    <div >
-<center><h3><a href="/updateMarks/" class="btn btn-primary enroll-btn" style="display: inline-block; width: 250px; margin-top: 50px;">Update Marks Table</a></center></h3>
-</div>
 
-<div class="adminTables">
-  <table border="2">
-    <tr>
-      <th>Username</th>
-        <th>Name</th>
-        <th>Std</th>
-        <th>Subject</th>
-        <th>Total Marks</th>
-        <th>Marks Scored</th>
-        <th>Percentage</th>
-      </tr>
 
-      {% for student in students %}
-      {% for mark in marks %}
-      {% if student.username == mark.username %}
-      <tr>
-        <td>{{ student.username }}</td>
-        <td>{{ student.studentName }}</td>
-        <td>{{ student.std }}</td>
-        <td>{{ mark.subject }}</td>
-        <td>{{ mark.totalMarks }}</td>
-        <td>{{ mark.scoredMarks }}</td>
-        <td>{{ mark.percentage }}</td>
-      </tr>
-      {% endif %}
-      {% endfor %}
-      {% endfor %}
-    </table>
-  </div>
+
+
 
 
   </main>
-
   <footer>
     {% include "footer.html" %}
   </footer>

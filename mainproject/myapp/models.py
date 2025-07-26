@@ -24,24 +24,24 @@ class Marks(models.Model):
     username = models.CharField(max_length=20)
     testDate = models.DateField(null=True,blank=True)
     subject = models.CharField(max_length=15,null=True,blank=True)
-    totalMarks = models.IntegerField(max_length=4,null=True,blank=True)
-    scoredMarks = models.IntegerField(max_length=4,null=True,blank=True)
-    percentage = models.IntegerField(max_length=4,null=True,blank=True)
+    totalMarks = models.IntegerField(max_length=4,null=True,blank=True,default=0)
+    scoredMarks = models.IntegerField(max_length=4,null=True,blank=True,default=0)
+    percentage = models.IntegerField(max_length=4,null=True,blank=True,default=0)
 
 
 
 class Events(models.Model):
-    image = models.ImageField(upload_to='')
+    image = models.ImageField(upload_to='events/')
     year =  models.IntegerField(max_length=4,null=True,blank=True)
     description = models.CharField(max_length=255)
 
 
 class Notes(models.Model):
+    notesFile = models.FileField(upload_to='notes/')
+    notesUrl = models.URLField()
     std = models.IntegerField(max_length=3,null=True,blank=True)
     subject = models.CharField(max_length=20,null = True, blank= True)
-    chaptername = models.CharField(max_length=20,null = True, blank= True)
-    notesFile = models.FileField(upload_to='notes/')
-    url = models.URLField()
+    chapter = models.CharField(max_length=20,null = True, blank= True)
 
 
 class Attendance(models.Model):

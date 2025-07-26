@@ -5,10 +5,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Profile</title>
+      <link rel="stylesheet" type="text/css" href="{% static 'static/style3.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'static/mobile.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header>
-        {% include "header.html" %}
+          <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">
+        <img  id='logoImg' src="{% static 'static/logo.png' %}" alt="Logo">
+        <span>Havale Science Academy</span>
+      </div>
+
+      <div class="nav-links" id="navLinks">
+        <a href="/">Home</a>
+        <a href="/messageModule/">Messeges</a>
+        <a href="/notes/">Notes</a>
+      </div>
+
+      <button style = "color:white;" class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <a href="/logout/" class="btn btn-primary enroll-btn">Logout</a>
+
+    </div>
+  </nav>
+
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+
+    <div class="mobile-menu-container">
+
+      <div class="mobile-menu-header">
+        <div class="logo">
+          <i class="fas fa-book-open"></i>
+          <span>Havale Science Academy</span>
+        </div>
+        
+        <button class="close-menu-btn" id="closeMenuBtn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="mobile-nav-links">
+        <a href="#home">Home</a>
+        <a href="#courses">Courses</a>
+        <a href="#about">About</a>
+        <a href="#testimonials">Event Gallery</a>
+        <a href="#testimonials">Notes</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <a href="#contact" class="btn btn-primary mobile-enroll-btn">Login</a>
+
+    </div>
+  </div>
+
     </header>
     <main>
         student profile page

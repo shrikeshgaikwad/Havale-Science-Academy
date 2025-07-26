@@ -4,18 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Havale Science Academy - Manage Events Page</title>
+    <title>Havale Science Academy - Manage Notes Page</title>
     <link rel="stylesheet" type="text/css" href="{% static 'static/style3.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="{% static 'static/script.js' %}"></script>
+  <script src="{% static 'static/script.js' %}"></script>
 </head>
 <body>
-    <main>
-        <!-- Navigation -->
+      <!-- Navigation -->
         <nav class="navbar">
             <div class="container">
             <div class="logo">
-                <img id='logoImg' src="{% static 'static/logo.png' %}" alt="Logo">
+                <img id='admin-logoImg' src="{% static 'static/logo.png' %}" alt="Logo">
                 <span>Havale Science Academy</span>
             </div>
 
@@ -59,21 +58,26 @@
             </div>
         </div>
 
-        
-        <form  method = "POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Upload</button>
 
-        </form>
+    <main>
+        
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+
+
         <div style="height:50px;"></div>
-        {% for event in events %}
+        {% for note in notes %}
         <div style="height:400px; width:260px;">
-            <img src="{{ event.image.url }}" alt="Event Image" style="width:182px; height:255px; object-fit: cover;  border-radius: 10px;">
-            <p>year: {{ event.year }}</p>
-            <p>{{ event.description }}</p>
+            <img src="{% static 'static/logo.png' %}#zoom=30" type="application/pdf" width="150px" height="200px" ></img>
+            <a href="{{ note.notesFile.url }}" target="_blank">Open PDF</a>
+            <p>year: {{ note.std }}</p>
+            <p>{{ note.subject }}</p>
+            <p>{{ note.chapter }}</p>
             <div style="Height:10px"></div>
-            <form action="{% url 'deleteEvent' event.id %}" method="POST">
+            <form action="{% url 'deleteNotes' note.id %}" method="POST">
                 {% csrf_token %}
                 <button type="submit" style="background-color: red; color: white; border: none; padding: 5px 10px; cursor: pointer;">
                     Delete

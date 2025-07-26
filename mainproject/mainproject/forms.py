@@ -6,3 +6,7 @@ class EventForm(forms.ModelForm):
         model = Events
         fields = ['image','year','description']
 
+class NotesForm (forms.ModelForm):
+    class Meta:
+        model = Notes
+        fields = ['notesFile','std','subject','chapter']
